@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+}
+
+header {
+  margin-top: 0.2em;
+}
+
+header img {
+  width: 50px;
+  object-fit: contain;
+}
+
+.flexed {
+  display: flex;
+  justify-content: space-evenly;
+}
