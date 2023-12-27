@@ -9,18 +9,26 @@
   <body>
     <header>
       <div class="flexed">
-        <a href="/slt.html">
-          <img src="./static/media/slt.png" alt="Super Lotto" />
-        </a>
-        <a href="/dd.html">
-          <img src="./static/media/dd.png" alt="Double Draw" />
-        </a>
-        <a href="/exc.html">
-          <img src="./static/media/exc.png" alt="Express Cash" />
-        </a>
-        <a href="/m6.html">
-          <img src="./static/media/m6.png" alt="Mega 6" />
-        </a>
+        <img
+          src="./static/media/slt.png"
+          alt="Super Lotto"
+          onclick="changePage('SUPER')"
+        />
+        <img
+          src="./static/media/dd.png"
+          alt="Double Draw"
+          onclick="changePage('DD')"
+        />
+        <img
+          src="./static/media/exc.png"
+          alt="Express Cash"
+          onclick="changePage('EXPRESS')"
+        />
+        <img
+          src="./static/media/m6.png"
+          alt="Mega 6"
+          onclick="changePage('MEGA')"
+        />
       </div>
     </header>
     <div id="content">
@@ -98,4 +106,7 @@
     integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
     crossorigin="anonymous"
   ></script>
+  <script src="static/scripts/utils.js"></script>
+  <script src="static/scripts/index.js"></script>
+  <script src="static/scripts/db.js"></script>
 </html>
