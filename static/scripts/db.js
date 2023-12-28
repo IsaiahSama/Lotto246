@@ -12,3 +12,10 @@ const prepareDB = async function () {
 };
 
 prepareDB();
+
+// const showSLT = () => {
+//   const res = db.exec("SELECT * FROM SUPER LIMIT 10");
+//   console.log(res[0]["values"][3]);
+// };
+
+// setTimeout(showSLT, 1000);
