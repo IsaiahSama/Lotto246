@@ -21,7 +21,7 @@ const getFormValues = () => {
 const getFrequencies = (numberArrays) => {
   freqs = {};
   for (let i = 0; i < numberArrays.length; i++) {
-    let results = numberArrays[i][0].split(", ");
+    let results = numberArrays[i][0].split("-");
     for (let res of results) {
       value = Number(res);
       if (!(value in freqs)) freqs[value] = 1;
