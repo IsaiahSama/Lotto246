@@ -9,11 +9,12 @@ let currentPage = "";
 
 const getFormValues = () => {
   target = document.getElementById("target").innerHTML;
+  limit = document.getElementById("limit").value;
   day = document.getElementById("day").value;
   month = document.getElementById("month").value;
   year = document.getElementById("year").value;
 
-  return [target, day, month, year];
+  return { target, limit, day, month, year };
 };
 
 const getFrequencies = (numberArrays) => {
@@ -56,19 +57,19 @@ const getMinMax = (numberObj) => {
 };
 
 const updateFields = (values) => {
-  minMaxAll = getMinMax(getAllTimeFreq("SUPER"));
+  minMaxAll = getMinMax(getAllTimeFreq(values.target));
   document.getElementById("mfat").innerHTML = minMaxAll["maxNum"];
   document.getElementById("lfat").innerHTML = minMaxAll["minNum"];
 
-  minMaxDay = getMinMax(getDayFreq("SUPER", 5));
+  minMaxDay = getMinMax(getDayFreq(values.target, values.day));
   document.getElementById("mcnd").innerHTML = minMaxDay["maxNum"];
   document.getElementById("lcnd").innerHTML = minMaxDay["minNum"];
 
-  minMaxMonth = getMinMax(getMonthFreq("SUPER", 6));
+  minMaxMonth = getMinMax(getMonthFreq(values.target, values.month));
   document.getElementById("mcnm").innerHTML = minMaxMonth["maxNum"];
   document.getElementById("lcnm").innerHTML = minMaxMonth["minNum"];
 
-  minMaxYear = getMinMax(getYearFreq("SUPER", 2015));
+  minMaxYear = getMinMax(getYearFreq(values.target, values.year));
   document.getElementById("mcny").innerHTML = minMaxYear["maxNum"];
   document.getElementById("lcny").innerHTML = minMaxYear["minNum"];
 };
