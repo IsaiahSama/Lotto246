@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="/static/styles/index.css" />
     <title>Lotto Watcher 246</title>
   </head>
@@ -82,43 +86,51 @@
           </select></span
         >
       </div>
-      <table>
-        <tr>
-          <td>Most Frequent of All Time:</td>
-          <td><span id="mfat"></span></td>
-        </tr>
-        <tr>
-          <td>Least Frequent of All Time:</td>
-          <td><span id="lfat"></span></td>
-        </tr>
-        <tr>
-          <td>Most common numbers on Day:</td>
-          <td><span id="mcnd"></span></td>
-        </tr>
-        <tr>
-          <td>Least common numbers on Day:</td>
-          <td><span id="lcnd"></span></td>
-        </tr>
-        <tr>
-          <td>Most common numbers in Month:</td>
-          <td><span id="mcnm"></span></td>
-        </tr>
-        <tr>
-          <td>Least common numbers in Month:</td>
-          <td><span id="lcnm"></span></td>
-        </tr>
-        <tr>
-          <td>Most common numbers of Year:</td>
-          <td><span id="mcny"></span></td>
-        </tr>
-        <tr>
-          <td>Least common numbers of Year:</td>
-          <td><span id="lcny"></span></td>
-        </tr>
+      <table class="table is-striped is-fullwidth">
+        <tbody>
+          <tr>
+            <td>Most Frequent of All Time:</td>
+            <td><span id="mfat"></span></td>
+          </tr>
+          <tr>
+            <td>Least Frequent of All Time:</td>
+            <td><span id="lfat"></span></td>
+          </tr>
+          <tr>
+            <td>Most common numbers on Day:</td>
+            <td><span id="mcnd"></span></td>
+          </tr>
+          <tr>
+            <td>Least common numbers on Day:</td>
+            <td><span id="lcnd"></span></td>
+          </tr>
+          <tr>
+            <td>Most common numbers in Month:</td>
+            <td><span id="mcnm"></span></td>
+          </tr>
+          <tr>
+            <td>Least common numbers in Month:</td>
+            <td><span id="lcnm"></span></td>
+          </tr>
+          <tr>
+            <td>Most common numbers of Year:</td>
+            <td><span id="mcny"></span></td>
+          </tr>
+          <tr>
+            <td>Least common numbers of Year:</td>
+            <td><span id="lcny"></span></td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <center>
-      <button id="updateButton" onclick="requestUpdate()">UPDATE</button>
+      <button
+        id="updateButton"
+        class="button is-success is-fullwidth"
+        onclick="requestUpdate()"
+      >
+        UPDATE
+      </button>
     </center>
   </body>
   <script

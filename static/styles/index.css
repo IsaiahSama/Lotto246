@@ -15,6 +15,7 @@ header img {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: 1em;
 }
 
 #content {
@@ -35,15 +36,4 @@ header img {
 
 .item {
   margin-bottom: 1em;
-}
-
-#updateButton {
-  width: 70%;
-  height: 30px;
-  border: 1px solid #333;
-  transition: background-color 0.3s ease-in;
-}
-
-#updateButton:hover {
-  background-color: rgb(194, 193, 193);
 }
