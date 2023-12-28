@@ -30,46 +30,38 @@ const getFrequencies = (numberArrays) => {
   return freqs;
 };
 
-const getMinMax = (numberObj) => {
+const getMinMax = (limit, numberObj) => {
   if (numberObj == null)
     return {
       minNum: "No values were found matching this parameter",
       maxNum: "No values were found matching this parameter",
     };
 
-  min = null;
-  max = 0;
-  minNum = 0;
-  maxNum = 0;
+  const compareFreqs = (a, b) => {
+    return numberObj[b] - numberObj[a];
+  };
 
-  for (let num of Object.keys(numberObj)) {
-    if (numberObj[num] > max) {
-      max = numberObj[num];
-      maxNum = num;
-    }
-    if (min == null || numberObj[num] < min) {
-      min = numberObj[num];
-      minNum = num;
-    }
-  }
-
-  return { minNum, maxNum };
+  numberObj = Object.keys(numberObj).sort(compareFreqs);
+  return { minNum: numberObj.slice(-limit), maxNum: numberObj.slice(0, limit) };
 };
 
 const updateFields = (values) => {
-  minMaxAll = getMinMax(getAllTimeFreq(values.target));
+  minMaxAll = getMinMax(values.limit, getAllTimeFreq(values.target));
   document.getElementById("mfat").innerHTML = minMaxAll["maxNum"];
   document.getElementById("lfat").innerHTML = minMaxAll["minNum"];
 
-  minMaxDay = getMinMax(getDayFreq(values.target, values.day));
+  minMaxDay = getMinMax(values.limit, getDayFreq(values.target, values.day));
   document.getElementById("mcnd").innerHTML = minMaxDay["maxNum"];
   document.getElementById("lcnd").innerHTML = minMaxDay["minNum"];
 
-  minMaxMonth = getMinMax(getMonthFreq(values.target, values.month));
+  minMaxMonth = getMinMax(
+    values.limit,
+    getMonthFreq(values.target, values.month)
+  );
   document.getElementById("mcnm").innerHTML = minMaxMonth["maxNum"];
   document.getElementById("lcnm").innerHTML = minMaxMonth["minNum"];
 
-  minMaxYear = getMinMax(getYearFreq(values.target, values.year));
+  minMaxYear = getMinMax(values.limit, getYearFreq(values.target, values.year));
   document.getElementById("mcny").innerHTML = minMaxYear["maxNum"];
   document.getElementById("lcny").innerHTML = minMaxYear["minNum"];
 };
