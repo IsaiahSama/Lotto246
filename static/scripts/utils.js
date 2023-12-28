@@ -8,12 +8,13 @@ const PAGES = {
 let currentPage = "";
 
 const getFormValues = () => {
-  target = document.getElementById("target").innerHTML;
+  target = document.getElementById("target").value;
   limit = document.getElementById("limit").value;
   day = document.getElementById("day").value;
   month = document.getElementById("month").value;
   year = document.getElementById("year").value;
 
+  console.log(target);
   return { target, limit, day, month, year };
 };
 
