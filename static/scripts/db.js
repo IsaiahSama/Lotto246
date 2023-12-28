@@ -17,7 +17,7 @@ const prepareDB = async function () {
     locateFile: (file) => `https://sql.js.org/dist/${file}`,
   });
 
-  const dataPromise = fetch("/static/db.sqlite").then((res) =>
+  const dataPromise = fetch("./static/db.sqlite").then((res) =>
     res.arrayBuffer()
   );
   const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
