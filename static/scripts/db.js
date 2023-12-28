@@ -28,10 +28,38 @@ const prepareDB = async function () {
 
 prepareDB();
 
-const getAllTimeFreq = (tableName, limit) => {
-  const cursor = db.exec(`SELECT NUMBERS FROM ${tableName} LIMIT ${limit}`);
-  const results = cursor[0]["values"];
-  //   console.log(results);
-  const freqs = getFrequencies(results);
-  return freqs;
+const queryDb = (queryString) => {
+  const cursor = db.exec(queryString);
+  if (cursor[0] == undefined) return null;
+  return cursor[0]["values"];
+};
+
+const getAllTimeFreq = (tableName) => {
+  const queryString = `SELECT NUMBERS FROM ${tableName}`;
+
+  const results = queryDb(queryString);
+  if (results == null) return null;
+  return getFrequencies(results);
+};
+
+const getDayFreq = (tableName, day) => {
+  let queryString = `SELECT NUMBERS FROM ${tableName} WHERE DATE LIKE "%_/${day}/%_"`;
+  if (day < 10) queryString += `OR DATE LIKE "$_/0${day}/%_"`;
+  const results = queryDb(queryString);
+  if (results == null) return null;
+  return getFrequencies(results);
+};
+
+const getMonthFreq = (tableName, month) => {
+  const queryString = `SELECT NUMBERS FROM ${tableName} WHERE DATE LIKE "${month}/%_/%_"`;
+  const results = queryDb(queryString);
+  if (results == null) return null;
+  return getFrequencies(results);
+};
+
+const getYearFreq = (tableName, year) => {
+  const queryString = `SELECT NUMBERS FROM ${tableName} WHERE DATE LIKE "%_/%_/${year}"`;
+  const results = queryDb(queryString);
+  if (results == null) return null;
+  return getFrequencies(results);
 };

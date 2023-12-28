@@ -30,28 +30,45 @@ const getFrequencies = (numberArrays) => {
 };
 
 const getMinMax = (numberObj) => {
+  if (numberObj == null)
+    return {
+      minNum: "No values were found matching this parameter",
+      maxNum: "No values were found matching this parameter",
+    };
+
   min = null;
   max = 0;
-  min_num = 0;
-  max_num = 0;
+  minNum = 0;
+  maxNum = 0;
 
   for (let num of Object.keys(numberObj)) {
     if (numberObj[num] > max) {
       max = numberObj[num];
-      max_num = num;
+      maxNum = num;
     }
     if (min == null || numberObj[num] < min) {
       min = numberObj[num];
-      min_num = num;
+      minNum = num;
     }
   }
 
-  return { min_num, max_num };
+  return { minNum, maxNum };
 };
 
 const updateFields = (values) => {
-  min_max_all = getMinMax(getAllTimeFreq("SUPER", 10));
-  console.log(min_max_all);
-  document.getElementById("mfat").innerHTML = min_max_all["max_num"];
-  document.getElementById("lfat").innerHTML = min_max_all["min_num"];
+  minMaxAll = getMinMax(getAllTimeFreq("SUPER"));
+  document.getElementById("mfat").innerHTML = minMaxAll["maxNum"];
+  document.getElementById("lfat").innerHTML = minMaxAll["minNum"];
+
+  minMaxDay = getMinMax(getDayFreq("SUPER", 5));
+  document.getElementById("mcnd").innerHTML = minMaxDay["maxNum"];
+  document.getElementById("lcnd").innerHTML = minMaxDay["minNum"];
+
+  minMaxMonth = getMinMax(getMonthFreq("SUPER", 6));
+  document.getElementById("mcnm").innerHTML = minMaxMonth["maxNum"];
+  document.getElementById("lcnm").innerHTML = minMaxMonth["minNum"];
+
+  minMaxYear = getMinMax(getYearFreq("SUPER", 2015));
+  document.getElementById("mcny").innerHTML = minMaxYear["maxNum"];
+  document.getElementById("lcny").innerHTML = minMaxYear["minNum"];
 };
