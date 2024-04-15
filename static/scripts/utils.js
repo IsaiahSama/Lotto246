@@ -18,19 +18,6 @@ const getFormValues = () => {
   return { target, limit, day, month, year };
 };
 
-const getFrequencies = (numberArrays) => {
-  freqs = {};
-  for (let i = 0; i < numberArrays.length; i++) {
-    let results = numberArrays[i][0].split("-");
-    for (let res of results) {
-      value = Number(res);
-      if (!(value in freqs)) freqs[value] = 1;
-      else freqs[value] += 1;
-    }
-  }
-  return freqs;
-};
-
 const getMinMax = (limit, numberObj) => {
   if (numberObj == null)
     return {
@@ -47,10 +34,12 @@ const getMinMax = (limit, numberObj) => {
 };
 
 const updateFields = (values) => {
+  console.log("Getting min max all");
   minMaxAll = getMinMax(values.limit, getAllTimeFreq(values.target));
   document.getElementById("mfat").innerHTML = minMaxAll["maxNum"];
   document.getElementById("lfat").innerHTML = minMaxAll["minNum"];
 
+  console.log("Getting min max day");
   minMaxDay = getMinMax(values.limit, getDayFreq(values.target, values.day));
   document.getElementById("mcnd").innerHTML = minMaxDay["maxNum"];
   document.getElementById("lcnd").innerHTML = minMaxDay["minNum"];
